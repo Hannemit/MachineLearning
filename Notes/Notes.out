@@ -1,0 +1,49 @@
+\BOOKMARK [1][-]{section.1}{Linear Regression}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Gradient descent}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Feature Scaling}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Choosing a learning rate}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Choosing features}{section.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Polynomial regression}{subsection.1.4}% 6
+\BOOKMARK [2][-]{subsection.1.5}{Normal equation}{section.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.5.1}{When use the normal equation}{subsection.1.5}% 8
+\BOOKMARK [3][-]{subsubsection.1.5.2}{What if cannot invert?}{subsection.1.5}% 9
+\BOOKMARK [1][-]{section.2}{Classification: Logistic Regression}{}% 10
+\BOOKMARK [2][-]{subsection.2.1}{Two classes}{section.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Examples}{subsection.2.1}% 12
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Fitting parameters}{subsection.2.1}% 13
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Simpler cost function}{subsection.2.1}% 14
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Beyond gradient descent}{subsection.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.2}{Multiple Classes}{section.2}% 16
+\BOOKMARK [1][-]{section.3}{Overfitting and underfitting}{}% 17
+\BOOKMARK [2][-]{subsection.3.1}{How do we know we are overfitting?}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.2}{Regularization}{section.3}% 19
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Examples}{subsection.3.2}% 20
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Regularized linear regression}{subsection.3.2}% 21
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Non-invertibility}{subsection.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Regularized Logistic Regression}{subsection.3.2}% 23
+\BOOKMARK [1][-]{section.4}{Neural Networks}{}% 24
+\BOOKMARK [2][-]{subsection.4.1}{Some intuition}{section.4}% 25
+\BOOKMARK [2][-]{subsection.4.2}{Forward propagation}{section.4}% 26
+\BOOKMARK [2][-]{subsection.4.3}{Back propagation}{section.4}% 27
+\BOOKMARK [1][-]{section.5}{How to improve}{}% 28
+\BOOKMARK [2][-]{subsection.5.1}{Training, \(cross\) validation and test sets}{section.5}% 29
+\BOOKMARK [2][-]{subsection.5.2}{Over- and underfitting}{section.5}% 30
+\BOOKMARK [2][-]{subsection.5.3}{Choose the regularization parameter }{section.5}% 31
+\BOOKMARK [2][-]{subsection.5.4}{Learning curves}{section.5}% 32
+\BOOKMARK [2][-]{subsection.5.5}{So, what do we do?}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.6}{Good way to start}{section.5}% 34
+\BOOKMARK [2][-]{subsection.5.7}{Skewed classes}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.8}{Does more data help?}{section.5}% 36
+\BOOKMARK [1][-]{section.6}{Support Vector Machines}{}% 37
+\BOOKMARK [2][-]{subsection.6.1}{Cost function for SVM}{section.6}% 38
+\BOOKMARK [2][-]{subsection.6.2}{Kernels}{section.6}% 39
+\BOOKMARK [2][-]{subsection.6.3}{Note on feature confusion}{section.6}% 40
+\BOOKMARK [2][-]{subsection.6.4}{Model selection tips}{section.6}% 41
+\BOOKMARK [1][-]{section.7}{K-means clustering}{}% 42
+\BOOKMARK [2][-]{subsection.7.1}{The algorithm}{section.7}% 43
+\BOOKMARK [2][-]{subsection.7.2}{How do we choose K?}{section.7}% 44
+\BOOKMARK [1][-]{section.8}{Large data sets}{}% 45
+\BOOKMARK [2][-]{subsection.8.1}{Stochastic gradient descent}{section.8}% 46
+\BOOKMARK [2][-]{subsection.8.2}{Mini-batch gradient descent}{section.8}% 47
+\BOOKMARK [1][-]{section.9}{Data compression}{}% 48
+\BOOKMARK [2][-]{subsection.9.1}{Principal Component Analysis}{section.9}% 49
