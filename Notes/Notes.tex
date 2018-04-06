@@ -3,6 +3,7 @@
 \usepackage{amssymb}
 \usepackage[autostyle]{csquotes}
 \usepackage[bookmarks]{hyperref}
+\usepackage{mathtools}
 \usepackage{xcolor}
 \usepackage{graphicx} %to include graphs
 \graphicspath{{Figures/}} %path for figures
@@ -13,6 +14,8 @@
 \newcommand{\upj}[1]{#1^{(j)}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\ind}[1]{^{(#1)}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
 \begin{document}
 
 These are notes based on the Stanford machine learning coursera course by Andrew Ng. They are not final yet and I will update them as I go through the course. These notes will be improved and material from outside the course will be added once I have finished the course.
@@ -537,13 +540,50 @@ Let $n$ denote the dimensionality of the input vectors that are given in some da
 \subsection{The algorithm}
 
 
+
+\subsubsection{Cost function}
+The K-means clustering algorithm, like all the other algorithms discussed above, is minimising a cost function. What is this cost function? It is given by:
+\begin{equation}
+J(c\ind{1}, \ldots, c\ind{m}, \mu_1, \ldots, \mu_K) = \frac{1}{m} \sum_{i = 1}^m \norm{x\ind{i} - \mu_{c\ind{i}}}^2
+\end{equation}
+where $c\ind{i}$ denotes the cluster index (which is in $(1, 2, \ldots K)$) to which training example $x\ind{i}$ is currently assigned, $\mu_k \in \mathbb{R}^n$ denotes the cluster centroid (i.e. the coordinates) of cluster $k$, and $\mu_{c\ind{i}}$ denotes the centroid of the cluster to which example $x\ind{i}$ has been assigned. For example, if example $x\ind{3}$ is assigned to cluster $9$, we have $c\ind{3} = 9$ and $\mu_{c\ind{3}} = \mu_9$. This cost function is called the \emph{distortion cost function}. All the cost function is doing is adding the squared distances between each of the training examples and their corresponding cluster centroid (Figure \ref{Fig: K clustering cost}).
+
+\begin{figure}[h!]
+\includegraphics[width=0.7\linewidth]{KCluster_Cost}
+\caption{\footnotesize{\textbf{K-means clustering cost function} Here we illustrate the terms in the cost function of the K-means clustering algorithm. For each data point, the squared distance between this point and its cluster centroid (i.e. the centroid of the cluster to which it is currently assigned) is calculated. All these distances are added to give the cost of the current configuration. }}
+\label{Fig: K clustering cost}
+\end{figure}
+
+We can now write the K-means clustering algorithm as:
+\begin{align}
+\text{Repeat} &\;\;\{ \nonumber \\
+\text{for}\; i &= \text{1 to}\; m \nonumber \\
+&\text{Set}\; c\ind{i} \;\text{to be the index of the cluster centroid} \nonumber \\
+&\text{closest to} \; x\ind{i} \;(c\ind{i} \in [1, K]) \nonumber \\
+\text{for}\;k &= \text{1 to K} \nonumber \\
+&\text{Set}\; \mu_k \; \text{to be the mean of the points} \nonumber \\
+&\text{assigned to cluster} \; k  \nonumber \\
+\}\;\;\quad \quad & 
+\end{align}
+The first loop over $i$ minimises $J()$ while keeping $\mu_1, \ldots, \mu_k$ fixed. So it finds the values $c\in{1}, \ldots c\in{m}$ such that $J()$ is minimised. In the second loop, the values $\mu_1, \ldots, \mu_k$ are then chosen to minimise $J()$. So first we minimise $J$ with respect to $c$, then with respect to $\mu$. This can be proven :p.
+
+\subsubsection{Randomly initialising cluster centroids}
+How do we initialise our cluster centroids? Suppose we have picked a valuve for $K$, we can then just randomly pick $K$ training examples and use those coordinates to initialise the cluster centroids. This is a common method. The final solution can depend on the initial random cluster assignment and it's possible to get stuck in a local minimum of the distortion cost function. We can simply perform our entire $K$-means algorithm many times (e.g. a hundred times) and calculate the cost at the end of each of the repeats. Then pick the clustering that gave the lowest cost value. The higher the number of clusters, the smaller the probability of being stuck in a local minimum. 
+
 \subsection{How do we choose K?}
-Unfortunately, there is no general method to determine the `best' value for K. One thing we can do is to maximise the Bayesian Information Criterion (BIC). The BIC is a criterion for model selection among a finite set of models. BIC penalises the use of more parameters as a model with many parameters can overfit the data and will, if its extra parameters are not penalised, always be the better model. The Akaike information criterion (AIC) can also be used. BIC penalises the number of parameters in the model more than AIC does. 
+Unfortunately, there is no general method to determine the `best' value for $K$. Here we briefly mention three possible methods to choose $K$, though there are others of course. Firstly, we can visualise the data in some way and pick a value of $K$ by hand. 
+
+Another approach one can take is to maximise the Bayesian Information Criterion (BIC). The BIC is a criterion for model selection among a finite set of models. BIC penalises the use of more parameters as a model with many parameters can overfit the data and will, if its extra parameters are not penalised, always be the better model. The Akaike information criterion (AIC) can also be used. BIC penalises the number of parameters in the model more than AIC does. 
 \begin{equation}
 BIC(M | X) = k \text{log}(m)- 2 \mathcal{L}(X|M, \theta)
 \end{equation}
 where 
 $\mathcal{L}(X|M, \theta)$ is the likelihood of the dataset $X$ given the model $M$ and parameters $\theta$, $k$ is the number of parameters in the model $M$, and $m$ is the number of datapoints we have. 
+
+Finally, we may apply the \emph{elbow method}. Like in the method above, we try out various values of $K$ and plot the cost function as a function of $K$. Sometimes the plot looks like an elbow and the number of clusters that should be picked is the location of the elbow. However, this method is not used a lot because often there's not a clear elbow point. 
+
+Basically, some common sense and some trial-and-error should be used to choose the number of clusters that is preferred. 
+
 
 \section{Large data sets}
 For very large data sets (e.g. hundreds of million or more training examples), using logistic or linear regression takes a long time. By plotting the learning curve we might find out whether using less training examples doesn't make much of a difference and we might just only use a subset of them (although I still have some feeling that throwing away data is throwing away information, which is always bad!). We here discuss some ways of dealing with big datasets. 
@@ -565,7 +605,7 @@ Every step takes more time compared to stochastic gradient descent, but we walk 
 
 Mini-batch gradient descent generally only outperforms stochastic gradient descent if we have a nice vectorised implementation of our gradient descent which will allow you to partially parallelise the gradient computations over the $b$ examples. 
 
-\section{Data compression}
+\section{Principal Component Analysis}
 Sometimes we might want to reduce the number of features in our dataset. We'll discuss some examples for 2D and 3D data because it's easier to interpret, but of course these ideas will then be generalised to much higher dimensional data. 
 
 Suppose we have 2D data and want to convert this into 1D data. For example, we have two features which are highly correlated with each other. Though our data is 2D, it effectively lies in a 1D space, i.e. a line. We can represent each of the datapoints as just a single cooredinate, namely its position on the line. How do we choose this line? There are various ways of doing this, one of them is Principal Component Analysis, discussed below. 
@@ -575,20 +615,56 @@ A similar story holds for reducing 3D data to 2D data. If the 3D data actually l
 
 We might also want to use dimensionality reduction to visualise data. If we have 50D data and we want to reduce it to 2D in order to plot it, then some dimensionality reduction method can be used. Now what do the new two components mean? That's not always easy to interpret. By looking at which data point are plotted where in the space we may interpret the meaning of the two features ourselves. 
 
-\subsection{Principal Component Analysis}
+\subsection{The algorithm}
 Principal Component Analysis (PCA) tries to find a lower-dimensional surface on which to project the data, while minimising the projection error. The projection error is often taken to be the sum of squared distances from the original data points to their projected locations. Before we do PCA, features should be normalised. 
 
 %Note that PCA is not the same as linear regression. Suppose we have two features and we want to find the line to project the data on to reduce the dimensionality to 1D, we do not just fit a line using linear regression and use that line. With linear regression we find the line that 
 
 In general we have $n$-dimensional data and we want to reduce it to $k$ dimensions. This means we have to find $k$ orthogonal vectors, $u\ind{1}, u\ind{2}, \ldots u\ind{k}$ which span the $k$-dimensional surface onto which the data is projected, while minimising the projection error.
 
+
 We want to go from $n$ to $k$ dimensions.
 First, we normalise the data for each feature, by subtracting the mean and dividing by the standard deviation (Eq. \eqref{Eq: Mean norm}).  Then, we compute the covariance matrix:
 \begin{equation}\label{Eq: Cov matrix}
 \Sigma = \frac{1}{m} \sum_{i = 1}^n \left(x\ind{i}\right) \left(x\ind{i}\right)^T
 \end{equation}
-and find the eigenvectors of this matrix. The covariance matrix is always symmetric positive semidefinite. Singular value decomposition (svd) can be used to get the eigenvalues (just use some library in whatever language we're using). Now we suppose that we have a matrix $U \in \mathbb{R}^{n \times n}$ whose columns represent the eigenvalues of $\Sigma$. Equation \eqref{Eq: Cov matrix} can be written in vectorised form as $\Sigma = 1/m X^T X$ with $X$ a matrix with each row representing a particular training example (i.e. $X \in \mathbb{R}^{m \times n}$. 
+and find the eigenvectors of this matrix. The covariance matrix is always symmetric positive semidefinite. Singular value decomposition (svd) can be used to get the eigenvalues (just use some library in whatever language we're using). Now we suppose that we have a matrix $U \in \mathbb{R}^{n \times n}$ whose columns represent the eigenvalues of $\Sigma$. Equation \eqref{Eq: Cov matrix} can be written in vectorised form as $\Sigma = 1/m X^T X$ with $X$ a matrix with each row representing a particular training example (i.e. $X \in \mathbb{R}^{m \times n}$). 
 
-We can now pick the first $k$ columns of the matrix $U$, which we call $U_{reduce} \in \mathbb{R}^{n \times k}$. Then we calculate$U_{reduce}^T x = z$ which itself has dimension $(k \times n)\times (n \times 1) = k \times 1$. This vector $z$ is the $k$-dimensional vector we wanted. In these equations $x$ is just a particular training example, so if we label it by $x\ind{i}$ then we obtain $z\ind{i}$. 
+We can now pick the first $k$ columns of the matrix $U$, which we call $U_{reduce} \in \mathbb{R}^{n \times k}$. Then we calculate 
+\begin{equation}
+z = U_{reduce}^T x
+\end{equation}
+which itself has dimension $(k \times n)\times (n \times 1) = k \times 1$. This vector $z$ is the $k$-dimensional vector we wanted. In these equations $x$ is just a particular training example, so if we label it by $x\ind{i}$ then we its now smaller feature vector $z\ind{i}$. 
 
+\subsection{How to go back to our original data?}
+When performing PCA, we have reduced the number of dimensions and now represent our training examples by $z\ind{i} \in \R^k$. Given these vectors $z$, how do we go back to our original data vectors $x$? We can of course just do $\tilde{x} \equiv U_{reduce} z \approx x$. This will not exactly be $x$, but if the projection error was small then it's a reasonable approximation. 
+
+The projection error which PCA miminises is given by  
+\begin{equation}
+\text{Proj. error} = \frac{1}{m} \sum_{i = 1}^m \norm{x\ind{i} - \tilde{x}\ind{i}}^2
+\end{equation}
+
+\subsection{How do we choose the number of principal components?}
+How do we choose $k$, the number of dimensions we want to have? Typically, $k$ is chosen to be the smallest value which satisfies the following condition:
+\begin{equation}\label{Eq: Variance retained PCA}
+\frac{\frac{1}{m} \sum_{i = 1}^m \norm{x\ind{i} - \tilde{x}\ind{i}}^2}{\frac{1}{m}\sum_{i = 1}^m \norm{x\ind{i}}^2} \leq 0.01 \; (\text{or 0.05, or 0.1, etc..)}
+\end{equation}
+Here the denominator represents the total variation in the data, i.e. how spread out are the original training examples we had. Note that we had normalised the data so the training examples should lie around the origin, the denominator then just calculates how far away from the origin our datapoints lie. The condition above means that we retain 99\% of the variance that was present in our original dataset. The value $0.01$ can be chosen differently, typically one would say `I want to have the $k$ that retains $y$\% of the variance' for some $y$. Sometimes quite a lot of dimensions can be lost while still retaining 90\% of the variance.
+
+One way of finding $k$ is of course to just start with some low value and increase it until for the first time we satisfy the condition above. However, one can imagine this is quite inefficient. When using singular value decomposition, a diagonal matrix $S$ is often returned. This matrix $S$ can be used to calculate the fraction in Eq. \eqref{Eq: Variance retained PCA} for every value of $k \in [1, n]$. To be precise, the fraction in Eq. \eqref{Eq: Variance retained PCA} for a particular value of $k$ is given by
+\begin{equation}
+1 - \frac{\sum_{i = 1}^k S_{ii}}{\sum_{i = 1}^n S_{ii}}
+\end{equation}
+We can therefore just calculate this value for different values of $k$ and find the lowest $k$ for which the above equation is less than whatever value we want to be less than to. In summary, we calculate $\Sigma$, use singular-value decomposition, use $S$ to find our preferred value of $k$, then use $U$ to construct the new data vectors $z$.
+
+\subsection{Example of when we could use PCA}
+Suppose we want to recognise images which are e.g. $200 \times 200$ pixels, which means we have $200 \times 200 \times 3 = 1.2e5$ parameters (if they are colour images). We want to reduce this number. If original labelled trainingset is given by $\left\{(x\ind{1}, y\ind{1}), \ldots, (x\ind{m}, y\ind{m})\right\}$, then we use PCA to map our inputs to a lower-dimensional space:
+\begin{align}
+x\ind{1}, x\ind{2}, &\ldots, x\ind{m} \in \R^{1.2e5} \nonumber \\
+&\downarrow PCA \nonumber \\
+z\ind{1}, z\ind{2}, &\ldots, z\ind{m} \in \R^{1000}
+\end{align}
+meaning our new training set is given by $\left\{(z\ind{1}, y\ind{1}), \ldots, (z\ind{m}, y\ind{m})\right\}$. Of course when predict outputs in a test-set, the original test-set datapoint is also first mapped to a lower-dimensional version. The PCA algorithm which finds the matrix $U_{reduce}$ which minimises the projection error should be used on the training set only, then the cross-validation and test set data can be transformed using that $U_{reduce}$ found. Using a powerful GPU to speed up our calculations is of course preferable than throwing away some of our input information. Only use PCA when your learning is really not fast enough for your purposes or if there isn't enough memory to use the original data. 
+
+ 
 \end{document}

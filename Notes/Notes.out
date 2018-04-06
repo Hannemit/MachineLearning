@@ -41,9 +41,14 @@
 \BOOKMARK [2][-]{subsection.6.4}{Model selection tips}{section.6}% 41
 \BOOKMARK [1][-]{section.7}{K-means clustering}{}% 42
 \BOOKMARK [2][-]{subsection.7.1}{The algorithm}{section.7}% 43
-\BOOKMARK [2][-]{subsection.7.2}{How do we choose K?}{section.7}% 44
-\BOOKMARK [1][-]{section.8}{Large data sets}{}% 45
-\BOOKMARK [2][-]{subsection.8.1}{Stochastic gradient descent}{section.8}% 46
-\BOOKMARK [2][-]{subsection.8.2}{Mini-batch gradient descent}{section.8}% 47
-\BOOKMARK [1][-]{section.9}{Data compression}{}% 48
-\BOOKMARK [2][-]{subsection.9.1}{Principal Component Analysis}{section.9}% 49
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Cost function}{subsection.7.1}% 44
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Randomly initialising cluster centroids}{subsection.7.1}% 45
+\BOOKMARK [2][-]{subsection.7.2}{How do we choose K?}{section.7}% 46
+\BOOKMARK [1][-]{section.8}{Large data sets}{}% 47
+\BOOKMARK [2][-]{subsection.8.1}{Stochastic gradient descent}{section.8}% 48
+\BOOKMARK [2][-]{subsection.8.2}{Mini-batch gradient descent}{section.8}% 49
+\BOOKMARK [1][-]{section.9}{Principal Component Analysis}{}% 50
+\BOOKMARK [2][-]{subsection.9.1}{The algorithm}{section.9}% 51
+\BOOKMARK [2][-]{subsection.9.2}{How to go back to our original data?}{section.9}% 52
+\BOOKMARK [2][-]{subsection.9.3}{How do we choose the number of principal components?}{section.9}% 53
+\BOOKMARK [2][-]{subsection.9.4}{Example of when we could use PCA}{section.9}% 54

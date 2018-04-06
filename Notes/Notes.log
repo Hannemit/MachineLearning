@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.28)  4 APR 2018 20:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.2.28)  6 APR 2018 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -236,6 +236,39 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip46
 )
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count116
+\calc@Bcount=\count117
+\calc@Adimen=\dimen116
+\calc@Bdimen=\dimen117
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count118
+\calc@Cskip=\skip49
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count119
+\l_MT_multwidth_dim=\dimen118
+\origjot=\skip50
+\l_MT_shortvdotswithinadjustabove_dim=\dimen119
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen120
+\l_MT_above_intertext_sep=\dimen121
+\l_MT_below_intertext_sep=\dimen122
+\l_MT_above_shortintertext_sep=\dimen123
+\l_MT_below_shortintertext_sep=\dimen124
+)
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
@@ -246,7 +279,7 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count116
+\Gread@gobject=\count120
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
@@ -272,22 +305,22 @@ File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 95.
 )
-\Gin@req@height=\dimen116
-\Gin@req@width=\dimen117
+\Gin@req@height=\dimen125
+\Gin@req@width=\dimen126
 )
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
-\Gm@cnth=\count117
-\Gm@cntv=\count118
-\c@Gm@tempcnt=\count119
-\Gm@bindingoffset=\dimen118
-\Gm@wd@mp=\dimen119
-\Gm@odd@mp=\dimen120
-\Gm@even@mp=\dimen121
-\Gm@layoutwidth=\dimen122
-\Gm@layoutheight=\dimen123
-\Gm@layouthoffset=\dimen124
-\Gm@layoutvoffset=\dimen125
+\Gm@cnth=\count121
+\Gm@cntv=\count122
+\c@Gm@tempcnt=\count123
+\Gm@bindingoffset=\dimen127
+\Gm@wd@mp=\dimen128
+\Gm@odd@mp=\dimen129
+\Gm@even@mp=\dimen130
+\Gm@layoutwidth=\dimen131
+\Gm@layoutheight=\dimen132
+\Gm@layouthoffset=\dimen133
+\Gm@layoutvoffset=\dimen134
 \Gm@dimlist=\toks21
 )
 Package csquotes Info: Checking for multilingual support...
@@ -295,38 +328,38 @@ Package csquotes Info: ... none found.
 
 
 Package csquotes Warning: No multilingual support.
-(csquotes)                Cannot enable multilingual quotes on input line 16.
+(csquotes)                Cannot enable multilingual quotes on input line 19.
 
 (./Notes.aux)
 \openout1 = `Notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 \AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 16.
+Package hyperref Info: Link coloring OFF on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count120
+\c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./Notes.out) (./Notes.out)
 \@outlinefile=\write3
@@ -335,16 +368,16 @@ LaTeX Info: Redefining \nameref on input line 16.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count121
-\scratchdimen=\dimen126
+\scratchcounter=\count125
+\scratchdimen=\dimen135
 \scratchbox=\box29
-\nofMPsegments=\count122
-\nofMParguments=\count123
+\nofMPsegments=\count126
+\nofMParguments=\count127
 \everyMPshowfont=\toks22
-\MPscratchCnt=\count124
-\MPscratchDim=\dimen127
-\MPnumerator=\count125
-\makeMPintoPDFobject=\count126
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen136
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
 \everyMPtoPDFconversion=\toks23
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
@@ -395,67 +428,67 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 22.
+LaTeX Font Info:    Try loading font information for U+msa on input line 25.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 22.
+LaTeX Font Info:    Try loading font information for U+msb on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<Figures/LearningRate.pdf, id=225, 1244.57268pt x 225.35416pt>
+<Figures/LearningRate.pdf, id=245, 1244.57268pt x 225.35416pt>
 File: Figures/LearningRate.pdf Graphic file (type pdf)
 
 <use Figures/LearningRate.pdf>
-Package pdftex.def Info: Figures/LearningRate.pdf used on input line 93.
+Package pdftex.def Info: Figures/LearningRate.pdf used on input line 96.
 (pdftex.def)             Requested size: 425.79092pt x 77.09735pt.
  [2 <./Figures/LearningRate.pdf>] [3]
-<Figures/LogisticRegr.pdf, id=265, 652.45416pt x 398.76346pt>
+<Figures/LogisticRegr.pdf, id=285, 652.45416pt x 398.76346pt>
 File: Figures/LogisticRegr.pdf Graphic file (type pdf)
 
 <use Figures/LogisticRegr.pdf>
-Package pdftex.def Info: Figures/LogisticRegr.pdf used on input line 164.
+Package pdftex.def Info: Figures/LogisticRegr.pdf used on input line 167.
 (pdftex.def)             Requested size: 407.66833pt x 249.1596pt.
  [4
 
  <./Figures/LogisticRegr.pdf>]
-<Figures/Convex.pdf, id=285, 369.40193pt x 310.7416pt>
+<Figures/Convex.pdf, id=305, 369.40193pt x 310.7416pt>
 File: Figures/Convex.pdf Graphic file (type pdf)
 
 <use Figures/Convex.pdf>
-Package pdftex.def Info: Figures/Convex.pdf used on input line 189.
+Package pdftex.def Info: Figures/Convex.pdf used on input line 192.
 (pdftex.def)             Requested size: 362.37569pt x 304.85184pt.
  [5 <./Figures/Convex.pdf>]
-<Figures/MultipleClasses.pdf, id=310, 491.32396pt x 121.76486pt>
+<Figures/MultipleClasses.pdf, id=330, 491.32396pt x 121.76486pt>
 File: Figures/MultipleClasses.pdf Graphic file (type pdf)
 
 <use Figures/MultipleClasses.pdf>
-Package pdftex.def Info: Figures/MultipleClasses.pdf used on input line 243.
+Package pdftex.def Info: Figures/MultipleClasses.pdf used on input line 246.
 (pdftex.def)             Requested size: 407.66833pt x 101.03322pt.
  [6 <./Figures/MultipleClasses.pdf>]
-<Figures/UnderOver.pdf, id=329, 558.35548pt x 127.57744pt>
+<Figures/UnderOver.pdf, id=349, 558.35548pt x 127.57744pt>
 File: Figures/UnderOver.pdf Graphic file (type pdf)
 
 <use Figures/UnderOver.pdf>
-Package pdftex.def Info: Figures/UnderOver.pdf used on input line 257.
+Package pdftex.def Info: Figures/UnderOver.pdf used on input line 260.
 (pdftex.def)             Requested size: 407.66833pt x 93.14827pt.
  [7 <./Figures/UnderOver.pdf>] [8]
-<Figures/NeuralNetwork.pdf, id=372, 1012.62851pt x 824.13278pt>
+<Figures/NeuralNetwork.pdf, id=392, 1012.62851pt x 824.13278pt>
 File: Figures/NeuralNetwork.pdf Graphic file (type pdf)
 
 <use Figures/NeuralNetwork.pdf>
-Package pdftex.def Info: Figures/NeuralNetwork.pdf used on input line 337.
+Package pdftex.def Info: Figures/NeuralNetwork.pdf used on input line 340.
 (pdftex.def)             Requested size: 407.66833pt x 331.77249pt.
  [9 <./Figures/NeuralNetwork.pdf>]
-<Figures/OverUnder_Diagnostic.pdf, id=389, 405.54677pt x 216.26405pt>
+<Figures/OverUnder_Diagnostic.pdf, id=409, 405.54677pt x 216.26405pt>
 File: Figures/OverUnder_Diagnostic.pdf Graphic file (type pdf)
 
 <use Figures/OverUnder_Diagnostic.pdf>
 Package pdftex.def Info: Figures/OverUnder_Diagnostic.pdf used on input line 38
-3.
+6.
 (pdftex.def)             Requested size: 271.7835pt x 144.93576pt.
 
 
@@ -463,69 +496,83 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 388.
+(hyperref)                removing `math shift' on input line 391.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\lambda' on input line 388.
+(hyperref)                removing `\lambda' on input line 391.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 388.
+(hyperref)                removing `math shift' on input line 391.
 
-[10] <Figures/LearningCurve.pdf, id=400, 771.77078pt x 797.27733pt>
+[10] <Figures/LearningCurve.pdf, id=420, 771.77078pt x 797.27733pt>
 File: Figures/LearningCurve.pdf Graphic file (type pdf)
 
 <use Figures/LearningCurve.pdf>
-Package pdftex.def Info: Figures/LearningCurve.pdf used on input line 403.
+Package pdftex.def Info: Figures/LearningCurve.pdf used on input line 406.
 (pdftex.def)             Requested size: 407.66833pt x 421.14378pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 5374) in paragraph at lines 425--425
+Underfull \hbox (badness 5374) in paragraph at lines 428--428
 []\OT1/cmr/m/n/10 Try adding poly-no-mial fea-tures
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 442.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 445.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 442.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 445.
  [11 <./Figures/OverUnder_Diagnostic.pdf>] [12 <./Figures/LearningCurve.pdf>] [
 13]
-<Figures/GaussianKernel.pdf, id=449, 211.96373pt x 158.88918pt>
+<Figures/GaussianKernel.pdf, id=469, 211.96373pt x 158.88918pt>
 File: Figures/GaussianKernel.pdf Graphic file (type pdf)
 
 <use Figures/GaussianKernel.pdf>
-Package pdftex.def Info: Figures/GaussianKernel.pdf used on input line 515.
+Package pdftex.def Info: Figures/GaussianKernel.pdf used on input line 518.
 (pdftex.def)             Requested size: 271.7835pt x 203.75322pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] [15 <./Figures/GaussianKernel.pdf>] [16]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 594.
- [17]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 594.
- (./Notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 594.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 594.
-Package rerunfilecheck Info: File `Notes.out' has not changed.
-(rerunfilecheck)             Checksum: 813C2414A99B9BE9EF89E77ADDDDE5D3;3416.
+[14] [15 <./Figures/GaussianKernel.pdf>]
+<Figures/KCluster_Cost.pdf, id=485, 112.37617pt x 79.13875pt>
+File: Figures/KCluster_Cost.pdf Graphic file (type pdf)
 
+<use Figures/KCluster_Cost.pdf>
+Package pdftex.def Info: Figures/KCluster_Cost.pdf used on input line 552.
+(pdftex.def)             Requested size: 317.07614pt x 223.29565pt.
+ [16 <./Figures/KCluster_Cost.pdf>] [17]
+[18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 670.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 670.
+ (./Notes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 670.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 670.
+
+
+Package rerunfilecheck Warning: File `Notes.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Notes.out':
+(rerunfilecheck)             Before: 6FF4D75346C1434ED5D0AF2896CCFE7C;3854
+(rerunfilecheck)             After:  298A1782F7377AE3C960197E60154352;3855.
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 7877 strings out of 494910
- 112327 string characters out of 6179836
- 224483 words of memory out of 5000000
- 10982 multiletter control sequences out of 15000+600000
+ 8445 strings out of 494910
+ 122256 string characters out of 6179836
+ 236942 words of memory out of 5000000
+ 11523 multiletter control sequences out of 15000+600000
  11859 words of font info for 46 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  29i,12n,35p,2466b,437s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -546,10 +593,10 @@ ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Notes.pdf (17 pages, 593398 bytes).
+Output written on Notes.pdf (19 pages, 613926 bytes).
 PDF statistics:
- 559 PDF objects out of 1000 (max. 8388607)
- 481 compressed objects within 5 object streams
- 106 named destinations out of 1000 (max. 500000)
- 438 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 607 PDF objects out of 1000 (max. 8388607)
+ 525 compressed objects within 6 object streams
+ 121 named destinations out of 1000 (max. 500000)
+ 483 words of extra memory for PDF output out of 10000 (max. 10000000)
 
