@@ -1,2 +1,6 @@
-/home/hanne/Dropbox/MachineL/Coursera/GitH/MachineLearning/Notes/Figures/
-/home/hanne/Dropbox/MachineL/Coursera/GitH/MachineLearning/Notes/Notes.tex
+/Notes/Figures
+
+*.tex
+*.log
+*.out
+*.aux
