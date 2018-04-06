@@ -1,7 +1,17 @@
 /Notes/Figures
+*Data*
 
 *.tex
 *.log
 *.out
 *.aux
 *.synctex.gz
+*.pyc
+*~
+
+##images
+*.svg
+*.png
+*.jpg
+*.gif
+*.jpeg
