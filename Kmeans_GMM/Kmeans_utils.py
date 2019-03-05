@@ -1,21 +1,20 @@
 import numpy as np
 from scipy.stats import multivariate_normal
 
-def InitialiseCentres(K, X):
-	'''
-	Initialise cluster centres
-	param K: integer, number of clusters
-	param X: dataset with each row a single example (mxn matrix)
-	returns: 
-		clus: Kxn matrix, each row is single centroid position
-	'''
-	m = len(X)
-	rnd_idx = np.random.choice(m, size = K) #random indices
-	clus = X[rnd_idx, :] #take data points as initial centroids	
-	return clus
+def initialise_centers(K, X):
+    """
+
+    :param K: integer, number of clusters
+    :param X: dataset with each row a single example (mxn matrix)
+    :return: clus, a Kxn matrix, each row is a single centroid position
+    """
+    m = len(X)
+    rnd_idx = np.random.choice(m, size=K) # random indices
+    clus = X[rnd_idx, :] # take data points as initial centroids
+    return clus
 
 
-def Expectation(X, clus):
+def get_expectation(X, clus):
 	'''
 	Find closest cluster centroid to each data point
 	param X: dataset with each row a single example (mxn matrix)
@@ -35,7 +34,7 @@ def Expectation(X, clus):
 
 	return idx, err 
 
-def FindCenters(X, idx, K):
+def find_centers(X, idx, K):
 	'''
 	Find position of cluster centroids by computing means of the data points assigned to each centre.
 	param X: dataset with each row a single example (mxn matrix)
@@ -52,7 +51,7 @@ def FindCenters(X, idx, K):
 	return clus 
 
 
-def Responsibility(X, mu, cov, pi):
+def get_responsibility(X, mu, cov, pi):
     '''
     Calculate responsibility matrix, r_ik, giving prob that datapoint i belongs to cluster k
     param X: (m x n) matrix, dataset with each row a single example
@@ -72,7 +71,7 @@ def Responsibility(X, mu, cov, pi):
     r /= np.linalg.norm(r, axis=1, keepdims=True, ord = 1) #normalise r
     return r  
 
-# def Responsibility(X, mu, cov, pi, nIter):
+# def get_responsibility(X, mu, cov, pi, nIter):
 #     '''
 #     Calculate responsibility matrix, r_ik, giving prob that datapoint i belongs to cluster k
 #     param X: (m x n) matrix, dataset with each row a single example
@@ -109,7 +108,7 @@ def Responsibility(X, mu, cov, pi):
 #     return r 
 
 
-def Max(r, X):
+def do_maximisation_step(r, X):
     '''
     Finds the mu, cov and pi (weights) that maximise the data log likelihood
     param r: (m x K) matrix, responsibility matrix
@@ -156,7 +155,7 @@ def multivariate_gaussian(pos, mu, Sigma):
 
     return np.exp(-fac / 2) / N
 
-def Log_llh(r, X, mu, cov, pi ):
+def get_log_llh(r, X, mu, cov, pi ):
     '''
     Calculate the expected data log likelihood
     param r: (m x K) matrix, responsibility matrix
@@ -179,7 +178,7 @@ def Log_llh(r, X, mu, cov, pi ):
     log_llh = llh_1 + llh_2
     return log_llh
 
-# def Log_llh(r, X, mu, cov, pi ):
+# def get_log_llh(r, X, mu, cov, pi ):
 #     '''
 #     Calculate the expected data log likelihood
 #     param r: (m x K) matrix, responsibility matrix
@@ -210,7 +209,7 @@ def Log_llh(r, X, mu, cov, pi ):
 #     return log_llh
 
 
-def PlotContours(mu, cov, X, axs, cmap = None, alpha = None):
+def plot_2d_gaussian_contours(mu, cov, X, axs, cmap = None, alpha = None):
     '''
     Function to plot contours of a bivariate Gaussian.
     param mu: 2D array with coordinates of Gaussian mean
@@ -242,7 +241,7 @@ def PlotContours(mu, cov, X, axs, cmap = None, alpha = None):
     Z = multivariate_gaussian(pos, mu=mu, Sigma=cov)
     axs.contour(Xs, Ys, Z, cmap=cmap, alpha= alpha)
 
-def Norm_data(X):
+def normalise_data(X):
     '''
     Normalise data, subtract mean and divide by std
     '''
