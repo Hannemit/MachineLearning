@@ -15,40 +15,40 @@ def initialise_centers(K, X):
 
 
 def get_expectation(X, clus):
-	'''
-	Find closest cluster centroid to each data point
-	param X: dataset with each row a single example (mxn matrix)
-	param clus: cluster centroid coordinates, each row single cluster position (Kxn matrix)
-	returns: 
-		idx: array with cluster assignment index for each data point (m-dim)
-		err: float giving total error (sum of squared distances) of current configuration
-	'''
-	K = len(clus)
-	m = len(X) #number of training examples
-	mat = np.zeros((m, K))
-	for i in range(K):
-		dist = np.sum((X - clus[i])**2, axis = 1)
-		mat[:,i] = dist
-	idx = np.argmin(mat, axis = 1) #closest cluster indices
-	err = np.sum(mat[range(m), idx])
+    """
+    Find closest cluster centroid to each data point
+    :param X: mxn numpy matrix, dataset with each row a single example
+    :param clus: Kxn numpy matrix, cluster centroid coordinates with each row a single cluster position
+    :return: idx, m-dim numpy array with cluster assignment index for each data point
+             err, float giving total error of current configuration
+    """
+    num_clusters = len(clus)
+    num_train_examples = len(X)
 
-	return idx, err 
+    mat = np.zeros((num_train_examples, num_clusters))
+    for i in range(num_clusters):
+        sum_sq_distance = np.sum((X - clus[i])**2, axis=1)
+        mat[:, i] = sum_sq_distance
+    idx_closest_cluster = np.argmin(mat, axis=1)
+    err = np.sum(mat[range(num_train_examples), idx_closest_cluster])
+
+    return idx_closest_cluster, err
 
 def find_centers(X, idx, K):
-	'''
-	Find position of cluster centroids by computing means of the data points assigned to each centre.
-	param X: dataset with each row a single example (mxn matrix)
-	param idx: array with cluster assignment index for each data point (m-dim)
-	param K: integer, number of clusters
-	returns:
-		clus: cluster centroid coordinates, each row single centroid position (Kxn matrix)   
-	'''
-	n = X.shape[1] #dimension of data points
-	clus = np.zeros((K, n))
-	for i in range(K):
-		rows = X[idx == i]
-		clus[i,:] = np.mean(rows, axis = 0)
-	return clus 
+    '''
+    Find position of cluster centroids by computing means of the data points assigned to each centre.
+    param X: dataset with each row a single example (mxn matrix)
+    param idx: array with cluster assignment index for each data point (m-dim)
+    param K: integer, number of clusters
+    returns:
+        clus: cluster centroid coordinates, each row single centroid position (Kxn matrix)
+    '''
+    n = X.shape[1] #dimension of data points
+    clus = np.zeros((K, n))
+    for i in range(K):
+        rows = X[idx == i]
+        clus[i,:] = np.mean(rows, axis = 0)
+    return clus
 
 
 def get_responsibility(X, mu, cov, pi):
