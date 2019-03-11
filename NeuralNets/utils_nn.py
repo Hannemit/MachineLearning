@@ -4,9 +4,9 @@ def sigmoid(z):
     return 1/(1 + np.exp(-z))
 
 def Unroll(Theta1, Theta2):
-    '''
+    """
     Take in two weight matrices, output one long array of weights. Undo this again with 'Roll'
-    '''
+    """
     T1 = np.reshape(Theta1, np.size(Theta1))
     T2 = np.reshape(Theta2, np.size(Theta2))
     T12 = np.concatenate((T1, T2))
@@ -14,13 +14,13 @@ def Unroll(Theta1, Theta2):
     return nn_params
 
 def Roll(nn_params, lyr_sz):
-    '''
+    """
     nn_params: long array of weights
     lyr_sz: vector of length 3 containing input, hidden, and output layer sizes (# nodes)
 
     returns:
         Theta1, Theta2, two weight matrices for going from layer 1 to layer 2, and layer 2 to layer 3.
-    '''    
+    """
     n_in, n_hid, n_out = lyr_sz
 
     len_t1 = n_hid*(n_in + 1)
@@ -32,9 +32,9 @@ def Roll(nn_params, lyr_sz):
 
 
 def sigmoidGradient(z):
-    ''' 
+    """
     Derivative of sigmoid(z)
-    '''
+    """
     g = sigmoid(z)*(1 - sigmoid(z))
     return g
 
@@ -63,7 +63,7 @@ def OneHot(y, nb_class, m):
 
 
 def Cost(labels, pred, Theta1, Theta2, lamb, m):
-    '''
+    """
     Calculate the cost of the current configuration.
     param labels: Kxm matrix with true labels. K = number of classes, m = number of training examples. 
     each column contains all zeros and a single one at the correct class 
@@ -78,7 +78,7 @@ def Cost(labels, pred, Theta1, Theta2, lamb, m):
 
     returns: 
     J: float, cost of current configuration
-    '''   
+    """
     #Theta1, Theta2 = Roll(nn_params, lyr_sz)
 
     #Now calculate overall cost
@@ -97,12 +97,12 @@ def Cost(labels, pred, Theta1, Theta2, lamb, m):
 
 def nnCostGrad(nn_params, lyr_sz, X, y, lamb):
     
-    '''
+    """
     lyr_sz: vector containing number of units in each of the layers, e.g. [400, 4, 10] (input, hidden, output) 
 
     nnCostGrad Implements the neural network cost function for a two layer
     neural network which performs classification
-    '''
+    """
     Theta1, Theta2 = Roll(nn_params, lyr_sz)
     m = X.shape[0]
     #Setup some useful variables (m = number of training examples)
@@ -123,13 +123,13 @@ def nnCostGrad(nn_params, lyr_sz, X, y, lamb):
     return J, grad
 
 def BackProp(labels, activations, Theta1, Theta2, lamb, m):
-    '''
+    """
     Function for backpropagation algorithm to provide the cost gradient. 
 
     returns:
         grad, long array containing gradients of cost with respect to each theta (Unroll used
                 to create the long array).
-    '''
+    """
     #Theta1, Theta2 = Roll(nn_params, lyr_sz)
     [a1, a2, a3] = activations
     delta3 = a3 - labels
@@ -165,9 +165,9 @@ def BackProp(labels, activations, Theta1, Theta2, lamb, m):
 
 
 def InitialiseWeights(n_in, n_out, eps):
-    '''
+    """
     Randomly initialise weights.
-    '''
+    """
     np.random.seed(3)
     w = np.random.uniform(size = (n_out, 1 + n_in))
     w = w*2*eps - eps
@@ -175,7 +175,7 @@ def InitialiseWeights(n_in, n_out, eps):
 
 
 def predict(Theta1, Theta2, X):
-    '''
+    """
     Predict the label of an input given a trained neural network
     param Theta1: s1xs2 matrix, weight matrix connecting input layer to first hidden layer. s1 is number of 
                     nodes in hidden layer, s2 number of inputs + bias.
@@ -186,7 +186,7 @@ def predict(Theta1, Theta2, X):
     returns: 
         pred: m-dim array containing predicted digit for each input sample
         prob: m-dim array, probability of an input belonging to its predicted class
-    '''
+    """
     outputs = GetActivations(Theta1, Theta2, X)[-1] 
 
     m = X.shape[0]
