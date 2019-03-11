@@ -1,17 +1,18 @@
 import numpy as np 
 
+
 def sigmoid(z):
     return 1/(1 + np.exp(-z))
 
 
-def unroll(Theta1, Theta2):
+def unroll(weights_mat_1, weight_mat_2):
     """
     Take in two weight matrices, output one long array of weights. Undo this again with 'Roll'
     """
-    T1 = np.reshape(Theta1, np.size(Theta1))
-    T2 = np.reshape(Theta2, np.size(Theta2))
-    T12 = np.concatenate((T1, T2))
-    nn_params = np.reshape(T12, np.size(T12))  
+    reshaped_weights_1 = np.reshape(weights_mat_1, np.size(weights_mat_1))
+    reshaped_weights_2 = np.reshape(weight_mat_2, np.size(weight_mat_2))
+    combined_weights = np.concatenate((reshaped_weights_1, reshaped_weights_2))
+    nn_params = np.reshape(combined_weights, np.size(combined_weights))
     return nn_params
 
 
@@ -62,8 +63,6 @@ def one_hot_encode(y, nb_class, m):
     return labels
 
 
-
-
 def get_cost(labels, pred, Theta1, Theta2, lamb, m):
     """
     Calculate the cost of the current configuration.
@@ -97,6 +96,7 @@ def get_cost(labels, pred, Theta1, Theta2, lamb, m):
     J += J_reg
     return J
 
+
 def get_cost_gradient(nn_params, lyr_sz, X, y, lamb):
     
     """
@@ -123,6 +123,7 @@ def get_cost_gradient(nn_params, lyr_sz, X, y, lamb):
 
     
     return J, grad
+
 
 def perform_back_prop(labels, activations, Theta1, Theta2, lamb, m):
     """
@@ -163,7 +164,6 @@ def perform_back_prop(labels, activations, Theta1, Theta2, lamb, m):
     grad = unroll(Theta1_grad, Theta2_grad)
     #grad = [np.ravel(Theta1_grad), np.ravel(Theta2_grad)]    
     return grad
-        
 
 
 def initialize_weights(n_in, n_out, eps):
