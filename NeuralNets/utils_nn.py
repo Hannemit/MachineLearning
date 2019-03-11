@@ -3,7 +3,8 @@ import numpy as np
 def sigmoid(z):
     return 1/(1 + np.exp(-z))
 
-def Unroll(Theta1, Theta2):
+
+def unroll(Theta1, Theta2):
     """
     Take in two weight matrices, output one long array of weights. Undo this again with 'Roll'
     """
@@ -13,7 +14,8 @@ def Unroll(Theta1, Theta2):
     nn_params = np.reshape(T12, np.size(T12))  
     return nn_params
 
-def Roll(nn_params, lyr_sz):
+
+def roll(nn_params, lyr_sz):
     """
     nn_params: long array of weights
     lyr_sz: vector of length 3 containing input, hidden, and output layer sizes (# nodes)
@@ -31,7 +33,7 @@ def Roll(nn_params, lyr_sz):
     return Theta1, Theta2
 
 
-def sigmoidGradient(z):
+def sigmoid_gradient(z):
     """
     Derivative of sigmoid(z)
     """
@@ -39,7 +41,7 @@ def sigmoidGradient(z):
     return g
 
 
-def GetActivations(Theta1, Theta2, X):
+def get_activations(Theta1, Theta2, X):
 
     #Now calculate the activations
     a1 = X; #activations of layer 1 are just the input values
@@ -53,7 +55,7 @@ def GetActivations(Theta1, Theta2, X):
     return [a1, a2, a3]
 
 
-def OneHot(y, nb_class, m):
+def one_hot_encode(y, nb_class, m):
     labels = np.zeros((nb_class, m))
     labels[y, range(m)] = 1 #y = 1,2, ... 10 for images 1,2, .. 0
     
@@ -62,7 +64,7 @@ def OneHot(y, nb_class, m):
 
 
 
-def Cost(labels, pred, Theta1, Theta2, lamb, m):
+def get_cost(labels, pred, Theta1, Theta2, lamb, m):
     """
     Calculate the cost of the current configuration.
     param labels: Kxm matrix with true labels. K = number of classes, m = number of training examples. 
@@ -79,7 +81,7 @@ def Cost(labels, pred, Theta1, Theta2, lamb, m):
     returns: 
     J: float, cost of current configuration
     """
-    #Theta1, Theta2 = Roll(nn_params, lyr_sz)
+    #Theta1, Theta2 = roll(nn_params, lyr_sz)
 
     #Now calculate overall cost
     pred_mat = -labels*np.log(pred) - (1 - labels)*np.log(1.0 - pred)
@@ -95,34 +97,34 @@ def Cost(labels, pred, Theta1, Theta2, lamb, m):
     J += J_reg
     return J
 
-def nnCostGrad(nn_params, lyr_sz, X, y, lamb):
+def get_cost_gradient(nn_params, lyr_sz, X, y, lamb):
     
     """
     lyr_sz: vector containing number of units in each of the layers, e.g. [400, 4, 10] (input, hidden, output) 
 
-    nnCostGrad Implements the neural network cost function for a two layer
+    get_cost_gradient Implements the neural network cost function for a two layer
     neural network which performs classification
     """
-    Theta1, Theta2 = Roll(nn_params, lyr_sz)
+    Theta1, Theta2 = roll(nn_params, lyr_sz)
     m = X.shape[0]
     #Setup some useful variables (m = number of training examples)
 
     #activations is vector [a1, a2, a3] where a3 are final outputs
-    activations = GetActivations(Theta1, Theta2, X) 
+    activations = get_activations(Theta1, Theta2, X)
     
     #One hot encode the correct labels
-    labels = OneHot(y, lyr_sz[-1], m)
+    labels = one_hot_encode(y, lyr_sz[-1], m)
     
     #Now calculate overall cost
     J = Cost(labels, activations[-1], Theta1, Theta2, lamb, m)
     
     #Gradient using back propagation
-    grad = BackProp(labels, activations, Theta1, Theta2, lamb, m)   
+    grad = perform_back_prop(labels, activations, Theta1, Theta2, lamb, m)
 
     
     return J, grad
 
-def BackProp(labels, activations, Theta1, Theta2, lamb, m):
+def perform_back_prop(labels, activations, Theta1, Theta2, lamb, m):
     """
     Function for backpropagation algorithm to provide the cost gradient. 
 
@@ -130,7 +132,7 @@ def BackProp(labels, activations, Theta1, Theta2, lamb, m):
         grad, long array containing gradients of cost with respect to each theta (Unroll used
                 to create the long array).
     """
-    #Theta1, Theta2 = Roll(nn_params, lyr_sz)
+    #Theta1, Theta2 = roll(nn_params, lyr_sz)
     [a1, a2, a3] = activations
     delta3 = a3 - labels
     #delta3 is a Kxm matrix. One column denotes
@@ -141,7 +143,7 @@ def BackProp(labels, activations, Theta1, Theta2, lamb, m):
     #the actual value (labels).
 
     temp = np.dot(np.transpose(Theta2), delta3)
-    delta2 = temp[1:, :]*sigmoidGradient(np.dot(Theta1, a1))
+    delta2 = temp[1:, :]*sigmoid_gradient(np.dot(Theta1, a1))
 
     Delta_1 = np.dot(delta2, np.transpose(a1))
     Delta_2 = np.dot(delta3, np.transpose(a2))
@@ -158,13 +160,13 @@ def BackProp(labels, activations, Theta1, Theta2, lamb, m):
     Theta1_grad = 1.0/m*(Delta_1 + lamb*theta1_reg);
     Theta2_grad = 1.0/m*(Delta_2 + lamb*theta2_reg);
 
-    grad = Unroll(Theta1_grad, Theta2_grad)
+    grad = unroll(Theta1_grad, Theta2_grad)
     #grad = [np.ravel(Theta1_grad), np.ravel(Theta2_grad)]    
     return grad
         
 
 
-def InitialiseWeights(n_in, n_out, eps):
+def initialize_weights(n_in, n_out, eps):
     """
     Randomly initialise weights.
     """
@@ -187,7 +189,7 @@ def predict(Theta1, Theta2, X):
         pred: m-dim array containing predicted digit for each input sample
         prob: m-dim array, probability of an input belonging to its predicted class
     """
-    outputs = GetActivations(Theta1, Theta2, X)[-1] 
+    outputs = get_activations(Theta1, Theta2, X)[-1]
 
     m = X.shape[0]
     #X = np.insert(X, 0, 1, axis=1) #add column of ones at start, bias units
