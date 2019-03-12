@@ -16,15 +16,15 @@ def unroll(weights_mat_1, weight_mat_2):
     return nn_params
 
 
-def roll(nn_params, lyr_sz):
+def roll(nn_params, layer_sizes):
     """
     nn_params: long array of weights
-    lyr_sz: vector of length 3 containing input, hidden, and output layer sizes (# nodes)
+    layer_sizes: vector of length 3 containing input, hidden, and output layer sizes (# nodes)
 
     returns:
         Theta1, Theta2, two weight matrices for going from layer 1 to layer 2, and layer 2 to layer 3.
     """
-    n_in, n_hid, n_out = lyr_sz
+    n_in, n_hid, n_out = layer_sizes
 
     len_t1 = n_hid*(n_in + 1)
     len_t2 = n_out*(n_hid + 1)
@@ -42,16 +42,16 @@ def sigmoid_gradient(z):
     return g
 
 
-def get_activations(Theta1, Theta2, X):
+def get_activations(weights_1, weights_2, input_data):
 
     #Now calculate the activations
-    a1 = X; #activations of layer 1 are just the input values
-    a1 = np.insert(a1, 0, 1, axis=1) #First, add col of ones to X, which are the bias units
+    a1 = input_data; #activations of layer 1 are just the input values
+    a1 = np.insert(a1, 0, 1, axis=1) #First, add col of ones to input_data, which are the bias units
     a1 = np.transpose(a1)
     
-    a2 = sigmoid(np.dot(Theta1, a1))
+    a2 = sigmoid(np.dot(weights_1, a1))
     a2 = np.insert(a2, 0, 1, axis=0) #add row of ones
-    a3 = sigmoid(np.dot(Theta2, a2)) #our outputs, a Kxm vector (K = nb classes) 
+    a3 = sigmoid(np.dot(weights_2, a2)) #our outputs, a Kxm vector (K = nb classes)
     
     return [a1, a2, a3]
 
@@ -80,7 +80,7 @@ def get_cost(labels, pred, Theta1, Theta2, lamb, m):
     returns: 
     J: float, cost of current configuration
     """
-    #Theta1, Theta2 = roll(nn_params, lyr_sz)
+    #Theta1, Theta2 = roll(nn_params, layer_sizes)
 
     #Now calculate overall cost
     pred_mat = -labels*np.log(pred) - (1 - labels)*np.log(1.0 - pred)
@@ -97,15 +97,15 @@ def get_cost(labels, pred, Theta1, Theta2, lamb, m):
     return J
 
 
-def get_cost_gradient(nn_params, lyr_sz, X, y, lamb):
+def get_cost_gradient(nn_params, layer_sizes, X, y, lamb):
     
     """
-    lyr_sz: vector containing number of units in each of the layers, e.g. [400, 4, 10] (input, hidden, output) 
+    layer_sizes: vector containing number of units in each of the layers, e.g. [400, 4, 10] (input, hidden, output)
 
     get_cost_gradient Implements the neural network cost function for a two layer
     neural network which performs classification
     """
-    Theta1, Theta2 = roll(nn_params, lyr_sz)
+    Theta1, Theta2 = roll(nn_params, layer_sizes)
     m = X.shape[0]
     #Setup some useful variables (m = number of training examples)
 
@@ -113,7 +113,7 @@ def get_cost_gradient(nn_params, lyr_sz, X, y, lamb):
     activations = get_activations(Theta1, Theta2, X)
     
     #One hot encode the correct labels
-    labels = one_hot_encode(y, lyr_sz[-1], m)
+    labels = one_hot_encode(y, layer_sizes[-1], m)
     
     #Now calculate overall cost
     J = Cost(labels, activations[-1], Theta1, Theta2, lamb, m)
@@ -133,7 +133,7 @@ def perform_back_prop(labels, activations, Theta1, Theta2, lamb, m):
         grad, long array containing gradients of cost with respect to each theta (Unroll used
                 to create the long array).
     """
-    #Theta1, Theta2 = roll(nn_params, lyr_sz)
+    #Theta1, Theta2 = roll(nn_params, layer_sizes)
     [a1, a2, a3] = activations
     delta3 = a3 - labels
     #delta3 is a Kxm matrix. One column denotes
