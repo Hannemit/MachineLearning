@@ -4,7 +4,7 @@ from scipy.stats import multivariate_normal
 
 def initialise_centers(num_clusters, data_set):
     """
-
+    Initialise cluster centers
     :param num_clusters: integer, number of clusters
     :param data_set: dataset with each row a single example (mxn matrix)
     :return: clus, a Kxn matrix, each row is a single centroid position
@@ -72,40 +72,6 @@ def get_responsibility(data_set, mu, cov, pi):
         r[:, k] = pi[k]*normal  # .pdf(data_set) takes pdf value per row
     r /= np.linalg.norm(r, axis=1, keepdims=True, ord=1)  # normalise r
     return r  
-
-# def get_responsibility(X, mu, cov, pi, nIter):
-#     """    Calculate responsibility matrix, r_ik, giving prob that datapoint i belongs to cluster k
-#     param X: (m x n) matrix, dataset with each row a single example
-#     param mu: (K x n) matrix, means of gaussian base dists, each row one dist
-#     param cov: (K x n x n) matrix, cov[k] is cov matrix of cluster k 
-#     param pi: k-dim array, weights of each of the clusters    
-    
-#     Returns r: (m x K) matrix, responsibility matrix
-#     """    m = X.shape[0]
-#     K = len(pi)
-#     r = np.zeros((m, K))
-
-#     #print(nIter)
-#     for k in range(K):
-#         #print(mu[k])
-#         #print(cov[k])
-        
-#         normal = multivariate_normal.pdf(X, mean = mu[k], cov = cov[k])
-        
-#         #if nIter == 23:
-#         #    assert False
-#         #multivariate_normal.pdf(data,mean=params['mu0'], cov=params['sig0'])
-#         #print(normal)
-        
-#         #we might be evaluating the gaussian at a point so far away we get underflow, prevent this.
-#         # try:
-#         #     pdf = normal.pdf(X)
-#         # except FloatingPointError:
-#         #     return -1
-#         #pdf = normal.pdf(X)       
-#         r[:, k] = pi[k]*normal #.pdf(X) takes pdf value per row
-#     r /= np.linalg.norm(r, axis=1, keepdims=True, ord = 1) #normalise r
-#     return r 
 
 
 def do_maximisation_step(resp_mat, data_set):
