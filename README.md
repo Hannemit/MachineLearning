@@ -1,6 +1,6 @@
 # MachineLearning
 
-This repository contains a collection of machine learning techniques. 
+This repository contains a collection of machine learning techniques. Right now there is not a lot of code yet but I am planning to add more interesting applications over time! 
 
 ## Directories
 
@@ -10,11 +10,11 @@ Notes based on the Stanford University Machine Learning coursera course. These n
 
 ### NeuralNets
 
-A simple example of a fully connected neural network, implemented from scratch. The network is trained to recognise handwritten digits. 
+A simple example of a fully connected neural network, implemented from scratch. The network is trained to recognise handwritten digits from the MNIst dataset. 
 
 ### LogisticRegression
 
-Applying logistic regression
+Applying logistic regression to a simulated dataset. 
 
 ### Kmeans_GMM
 
